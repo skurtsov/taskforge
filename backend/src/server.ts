@@ -1,7 +1,9 @@
 import Fastify from "fastify";
 import { jobRoutes } from "./routes/jobs.js";
-
+import { validatorCompiler, serializerCompiler } from "@fastify/type-provider-zod";
 const app = Fastify({ logger: true });
+app.setValidatorCompiler(validatorCompiler);
+app.setSerializerCompiler(serializerCompiler);
 
 app.register(jobRoutes);
 
