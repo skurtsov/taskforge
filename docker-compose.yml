@@ -1,0 +1,16 @@
+services:
+  postgres:
+    image: postgres:17-alpine
+    container_name: taskforge-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: taskforge
+      POSTGRES_PASSWORD: taskforge
+      POSTGRES_DB: taskforge
+    ports:
+      - "5432:5432"
+    volumes:
+      - taskforge_postgres_data:/var/lib/postgresql/data
+
+volumes:
+  taskforge_postgres_data:
